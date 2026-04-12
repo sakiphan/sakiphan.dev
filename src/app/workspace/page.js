@@ -45,17 +45,6 @@ export default async function Workspace() {
                   )
                 })}
               </TableBody>
-              <TableCaption className="py-3">
-                For other cool stuff, check{' '}
-                <a
-                  href="https://some.wtf"
-                  className="link break-words after:content-['_↗']"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  some.wtf
-                </a>
-              </TableCaption>
             </Table>
           </div>
         </div>

@@ -12,7 +12,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build arguments for env vars needed at build time
+# Build arguments - needed for Next.js static generation
 ARG CONTENTFUL_SPACE_ID
 ARG CONTENTFUL_ACCESS_TOKEN
 ARG CONTENTFUL_PREVIEW_ACCESS_TOKEN
@@ -22,6 +22,7 @@ ARG NEXT_PUBLIC_RAINDROP_ACCESS_TOKEN
 ARG NEXT_PUBLIC_TINYBIRD_TOKEN
 ARG SUPABASE_URL
 ARG SUPABASE_SERVICE_ROLE_KEY
+
 ENV CONTENTFUL_SPACE_ID=$CONTENTFUL_SPACE_ID
 ENV CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN
 ENV CONTENTFUL_PREVIEW_ACCESS_TOKEN=$CONTENTFUL_PREVIEW_ACCESS_TOKEN
@@ -36,7 +37,7 @@ ENV NODE_ENV=production
 
 RUN bun run build
 
-# Stage 3: Production runtime
+# Stage 3: Production runtime (no secrets baked in)
 FROM oven/bun:1.3-alpine AS runner
 WORKDIR /app
 

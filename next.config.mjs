@@ -115,7 +115,6 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['framer-motion', '@supabase/supabase-js', 'react-tweet'],
-    turbopackFileSystemCacheForDev: true,
     webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP']
   },
   transpilePackages: ['geist']

@@ -12,7 +12,7 @@ export const size = {
 
 export async function generateStaticParams() {
   const bookmarks = await getBookmarks()
-  const items = bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  const items = (bookmarks ?? []).map((bookmark) => ({ slug: bookmark.slug }))
   return items.length > 0 ? items : [{ slug: '__placeholder' }]
 }
 
@@ -24,7 +24,7 @@ export async function GET(_, props) {
     getRegularFont(),
     getBoldFont()
   ])
-  const currentBookmark = bookmarks.find((bookmark) => bookmark.slug === slug)
+  const currentBookmark = (bookmarks ?? []).find((bookmark) => bookmark.slug === slug)
   if (!currentBookmark) return null
 
   return new ImageResponse(

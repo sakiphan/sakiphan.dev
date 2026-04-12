@@ -14,14 +14,14 @@ import { sortByProperty } from '@/lib/utils'
 
 export async function generateStaticParams() {
   const bookmarks = await getBookmarks()
-  const items = bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  const items = (bookmarks ?? []).map((bookmark) => ({ slug: bookmark.slug }))
   return items.length > 0 ? items : [{ slug: '__placeholder' }]
 }
 
 async function fetchData(slug) {
   'use cache'
 
-  const bookmarks = await getBookmarks()
+  const bookmarks = (await getBookmarks()) ?? []
   const currentBookmark = bookmarks.find((bookmark) => bookmark.slug === slug)
   if (!currentBookmark) notFound()
 
@@ -64,7 +64,7 @@ export default async function CollectionPage(props) {
 export async function generateMetadata(props) {
   const params = await props.params
   const { slug } = params
-  const bookmarks = await getBookmarks()
+  const bookmarks = (await getBookmarks()) ?? []
   const currentBookmark = bookmarks.find((bookmark) => bookmark.slug === slug)
   if (!currentBookmark) return null
 

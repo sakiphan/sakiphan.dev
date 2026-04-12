@@ -3,7 +3,8 @@ import { getBookmarks } from '@/lib/raindrop'
 import { getSortedPosts } from '@/lib/utils'
 
 export default async function sitemap() {
-  const [allPosts, bookmarks, allPages] = await Promise.all([getAllPosts(), getBookmarks(), getAllPageSlugs()])
+  const [allPosts, rawBookmarks, allPages] = await Promise.all([getAllPosts(), getBookmarks(), getAllPageSlugs()])
+  const bookmarks = rawBookmarks ?? []
 
   const sortedWritings = getSortedPosts(allPosts)
   const writings = sortedWritings.map((post) => {

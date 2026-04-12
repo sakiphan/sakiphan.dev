@@ -3,7 +3,8 @@ import { Feed } from 'feed'
 import { getBookmarkItems, getBookmarks } from '@/lib/raindrop'
 
 export async function GET() {
-  const bookmarks = await getBookmarks()
+  const bookmarks = (await getBookmarks()) ?? []
+  if (!bookmarks.length) return new Response('', { status: 404 })
   const date = new Date()
   const siteURL = 'https://sakiphan.dev'
   const author = {

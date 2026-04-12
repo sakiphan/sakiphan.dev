@@ -14,7 +14,7 @@ async function fetchData() {
   'use cache'
 
   const bookmarks = await getBookmarks()
-  const sortedBookmarks = sortByProperty(bookmarks, 'title')
+  const sortedBookmarks = sortByProperty(bookmarks ?? [], 'title')
   return { bookmarks: sortedBookmarks }
 }
 

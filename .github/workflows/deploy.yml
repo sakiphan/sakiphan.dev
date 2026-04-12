@@ -27,8 +27,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.HARBOR_URL }}/sakiphan-dev/sakiphan-dev:latest
-            ${{ secrets.HARBOR_URL }}/sakiphan-dev/sakiphan-dev:${{ github.sha }}
+            ${{ secrets.HARBOR_URL }}/sakiphan-dev/web:latest
+            ${{ secrets.HARBOR_URL }}/sakiphan-dev/web:${{ github.sha }}
           build-args: |
             CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }}
             CONTENTFUL_ACCESS_TOKEN=${{ secrets.CONTENTFUL_ACCESS_TOKEN }}

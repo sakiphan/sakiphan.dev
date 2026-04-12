@@ -13,7 +13,6 @@ import { sharedMetadata } from '@/app/shared-metadata'
 import { MenuContent } from '@/components/menu-content'
 import { SideMenu } from '@/components/side-menu'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { PROFILES } from '@/lib/constants'
 import { preloadGetAllPosts } from '@/lib/contentful'
 
 export default async function RootLayout({ children }) {
@@ -59,7 +58,7 @@ export default async function RootLayout({ children }) {
 }
 
 export const metadata = {
-  metadataBase: new URL('https://onur.dev'),
+  metadataBase: new URL('https://sakiphan.dev'),
   robots: {
     index: true,
     follow: true
@@ -69,7 +68,7 @@ export const metadata = {
     template: `%s — ${sharedMetadata.title}`
   },
   description: sharedMetadata.description,
-  keywords: ['Onur Şuyalçınkaya', 'Onur Suyalcinkaya', 'onur dev', 'onur.dev'],
+  keywords: ['Sakıp Han Dursun', 'Sakip Han Dursun', 'sakiphan', 'sakiphan.dev', 'DevOps'],
   openGraph: {
     title: {
       default: sharedMetadata.title,
@@ -78,7 +77,7 @@ export const metadata = {
     description: sharedMetadata.description,
     alt: sharedMetadata.title,
     type: 'website',
-    url: 'https://onur.dev',
+    url: 'https://sakiphan.dev',
     siteName: sharedMetadata.title,
     locale: 'en_IE'
   },
@@ -86,12 +85,7 @@ export const metadata = {
     canonical: '/'
   },
   twitter: {
-    card: 'summary_large_image',
-    site: `@${PROFILES.twitter.username}`,
-    creator: `@${PROFILES.twitter.username}`
-  },
-  other: {
-    pinterest: 'nopin'
+    card: 'summary_large_image'
   }
 }
 

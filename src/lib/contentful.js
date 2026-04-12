@@ -64,6 +64,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
         postCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             title
+            titleTr
             slug
             date
             seo {
@@ -123,6 +124,26 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
                         }
                       }
                     }
+                  }
+                }
+              }
+            }
+            contentTr {
+              json
+              links {
+                assets {
+                  block {
+                    sys {
+                      id
+                    }
+                    url(transform: {
+                      format: AVIF,
+                      quality: 50
+                    })
+                    title
+                    width
+                    height
+                    description
                   }
                 }
               }

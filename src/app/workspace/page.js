@@ -1,8 +1,6 @@
 'use cache'
 
 import { cacheLife } from 'next/cache'
-import Image from 'next/image'
-
 import { FloatingHeader } from '@/components/floating-header'
 import { GradientBg4 } from '@/components/gradient-bg'
 import { Link } from '@/components/link'
@@ -23,19 +21,7 @@ export default async function Workspace() {
       <div className="content-wrapper">
         <div className="content">
           <PageTitle title="Workspace" />
-          <figure>
-            <Image
-              src="/assets/workspace.avif"
-              alt="Workspace"
-              className="animate-reveal w-full object-cover"
-              width={766}
-              height={901}
-              loading="eager"
-              priority
-            />
-            <figcaption className="mt-2 text-center text-xs font-light break-all text-gray-500">Workspace</figcaption>
-          </figure>
-          <div className="mt-2 overflow-hidden rounded-lg border bg-white md:mt-8">
+          <div className="overflow-hidden rounded-lg border bg-white">
             <Table>
               <TableHeader>
                 <TableRow>

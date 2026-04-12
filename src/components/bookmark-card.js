@@ -12,7 +12,7 @@ export const BookmarkCard = ({ bookmark, order }) => {
   }
 
   const href = new URL(bookmark.link)
-  href.searchParams.set('ref', 'onur.dev')
+  href.searchParams.set('ref', 'sakiphan.dev')
 
   return (
     <a

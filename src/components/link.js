@@ -6,7 +6,7 @@ export const Link = ({ href = '#', ...rest }) => {
   const isExternal = isExternalLink(href)
   if (isExternal) {
     const hrefObj = new URL(href)
-    hrefObj.searchParams.set('ref', 'onur.dev')
+    hrefObj.searchParams.set('ref', 'sakiphan.dev')
 
     return (
       <a

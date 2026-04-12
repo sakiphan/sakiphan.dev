@@ -14,7 +14,8 @@ import { sortByProperty } from '@/lib/utils'
 
 export async function generateStaticParams() {
   const bookmarks = await getBookmarks()
-  return bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  const items = bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  return items.length > 0 ? items : [{ slug: '__placeholder' }]
 }
 
 async function fetchData(slug) {
@@ -69,7 +70,7 @@ export async function generateMetadata(props) {
 
   const siteUrl = `/bookmarks/${currentBookmark.slug}`
   const seoTitle = `${currentBookmark.title} | Bookmarks`
-  const seoDescription = `A curated selection of various handpicked ${currentBookmark.title.toLowerCase()} bookmarks by Onur Şuyalçınkaya`
+  const seoDescription = `A curated selection of various handpicked ${currentBookmark.title.toLowerCase()} bookmarks by Sakıp Han Dursun`
 
   return {
     title: seoTitle,

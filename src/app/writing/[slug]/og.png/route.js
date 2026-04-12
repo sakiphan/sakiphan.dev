@@ -14,7 +14,8 @@ export const size = {
 
 export async function generateStaticParams() {
   const allPosts = await getAllPostSlugs()
-  return allPosts.map((post) => ({ slug: post.slug }))
+  const posts = allPosts.map((post) => ({ slug: post.slug }))
+  return posts.length > 0 ? posts : [{ slug: '__placeholder' }]
 }
 
 export async function GET(_, props) {
@@ -35,7 +36,7 @@ export async function GET(_, props) {
     (
       <OpenGraphImage
         title={ogImageTitle || title}
-        description={ogImageSubtitle || 'by Onur Şuyalçınkaya'}
+        description={ogImageSubtitle || 'by Sakıp Han Dursun'}
         url="writing"
       />
     ),

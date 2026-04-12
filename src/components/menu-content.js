@@ -9,7 +9,7 @@ export const MenuContent = () => (
       <NextLink href="/" className="link-card inline-flex items-center gap-2 p-2">
         <img
           src="/assets/me.avif"
-          alt="Onur Şuyalçınkaya"
+          alt="Sakıp Han Dursun"
           width={40}
           height={40}
           loading="lazy"
@@ -18,8 +18,8 @@ export const MenuContent = () => (
           nopin="nopin"
         />
         <div className="flex flex-col">
-          <span className="font-semibold tracking-tight">Onur Şuyalçınkaya</span>
-          <span className="text-gray-600">Software Engineer</span>
+          <span className="font-semibold tracking-tight">Sakıp Han Dursun</span>
+          <span className="text-gray-600">DevOps Specialist</span>
         </div>
       </NextLink>
       <div className="flex flex-col gap-1">

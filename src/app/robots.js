@@ -4,7 +4,7 @@ export default function robots() {
       userAgent: '*',
       allow: '/'
     },
-    sitemap: 'https://onur.dev/sitemap.xml',
-    host: 'https://onur.dev'
+    sitemap: 'https://sakiphan.dev/sitemap.xml',
+    host: 'https://sakiphan.dev'
   }
 }

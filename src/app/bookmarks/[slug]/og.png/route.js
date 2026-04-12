@@ -12,7 +12,8 @@ export const size = {
 
 export async function generateStaticParams() {
   const bookmarks = await getBookmarks()
-  return bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  const items = bookmarks.map((bookmark) => ({ slug: bookmark.slug }))
+  return items.length > 0 ? items : [{ slug: '__placeholder' }]
 }
 
 export async function GET(_, props) {
@@ -30,7 +31,7 @@ export async function GET(_, props) {
     (
       <OpenGraphImage
         title={currentBookmark.title}
-        description={`A curated selection of various handpicked ${currentBookmark.title.toLowerCase()} bookmarks by Onur Şuyalçınkaya`}
+        description={`A curated selection of various handpicked ${currentBookmark.title.toLowerCase()} bookmarks by Sakıp Han Dursun`}
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"

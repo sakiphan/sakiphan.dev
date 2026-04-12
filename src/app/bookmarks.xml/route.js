@@ -5,10 +5,10 @@ import { getBookmarkItems, getBookmarks } from '@/lib/raindrop'
 export async function GET() {
   const bookmarks = await getBookmarks()
   const date = new Date()
-  const siteURL = 'https://onur.dev'
+  const siteURL = 'https://sakiphan.dev'
   const author = {
-    name: 'Onur Şuyalçınkaya',
-    link: 'https://onur.dev'
+    name: 'Sakıp Han Dursun',
+    link: 'https://sakiphan.dev'
   }
 
   const feed = new Feed({

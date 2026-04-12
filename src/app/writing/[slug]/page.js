@@ -5,17 +5,17 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { ClientOnly } from '@/components/client-only'
-import { RichText } from '@/components/contentful/rich-text'
 import { FloatingHeader } from '@/components/floating-header'
-import { PageTitle } from '@/components/page-title'
 import { ScrollArea } from '@/components/scroll-area'
+import { BilingualContent } from '@/components/writing/bilingual-content'
 import { WritingViews } from '@/components/writing-views'
 import { getAllPostSlugs, getPost, getWritingSeo } from '@/lib/contentful'
 import { getDateTimeFormat, isDevelopment } from '@/lib/utils'
 
 export async function generateStaticParams() {
   const allPosts = await getAllPostSlugs()
-  return allPosts.map((post) => ({ slug: post.slug }))
+  const posts = allPosts.map((post) => ({ slug: post.slug }))
+  return posts.length > 0 ? posts : [{ slug: '__placeholder' }]
 }
 
 async function fetchData(slug) {
@@ -38,9 +38,11 @@ export default async function WritingSlug(props) {
 
   const {
     title,
+    titleTr,
     date,
     seo: { title: seoTitle, description: seoDescription },
     content,
+    contentTr,
     sys: { firstPublishedAt, publishedAt: updatedAt }
   } = data
 
@@ -58,9 +60,9 @@ export default async function WritingSlug(props) {
     dateModified,
     author: {
       '@type': 'Person',
-      name: 'Onur Şuyalçınkaya'
+      name: 'Sakıp Han Dursun'
     },
-    url: `https://onur.dev/writing/${slug}`
+    url: `https://sakiphan.dev/writing/${slug}`
   }
 
   return (
@@ -71,16 +73,14 @@ export default async function WritingSlug(props) {
         </FloatingHeader>
         <div className="content-wrapper @container/writing">
           <article className="content">
-            <PageTitle
+            <BilingualContent
+              content={content}
+              contentTr={contentTr}
               title={title}
-              subtitle={
-                <time dateTime={postDate} className="text-gray-400">
-                  {dateString}
-                </time>
-              }
-              className="mb-6 flex flex-col gap-3"
+              titleTr={titleTr}
+              dateString={dateString}
+              postDate={postDate}
             />
-            <RichText content={content} />
           </article>
         </div>
       </ScrollArea>

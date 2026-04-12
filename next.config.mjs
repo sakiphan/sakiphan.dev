@@ -4,6 +4,7 @@ import { next } from '@million/lint'
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  output: 'standalone',
   cacheComponents: true,
   logging: {
     fetches: {

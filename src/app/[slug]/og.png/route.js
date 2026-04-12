@@ -12,12 +12,12 @@ export const size = {
 
 export async function generateStaticParams() {
   const allPages = await getAllPageSlugs()
-
-  return allPages
-    .filter((page) => !page.hasCustomPage) // filter out pages that have custom pages, e.g. /journey
+  const pages = allPages
+    .filter((page) => !page.hasCustomPage)
     .map((page) => ({
       slug: page.slug
     }))
+  return pages.length > 0 ? pages : [{ slug: '__placeholder' }]
 }
 
 export async function GET(_, props) {

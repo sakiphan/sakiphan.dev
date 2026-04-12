@@ -7,7 +7,7 @@ export default function proxy(request, event) {
   async function sendAnalytics() {
     const URL =
       process.env.NODE_ENV === 'production'
-        ? 'https://onur.dev/api/increment-views'
+        ? 'https://sakiphan.dev/api/increment-views'
         : 'http://localhost:3000/api/increment-views'
 
     try {

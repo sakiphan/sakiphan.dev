@@ -16,12 +16,14 @@ import { isDevelopment } from '@/lib/utils'
 
 export async function generateStaticParams() {
   const allPages = await getAllPageSlugs()
-
-  return allPages
-    .filter((page) => !page.hasCustomPage) // filter out pages that have custom pages, e.g. /journey
+  const pages = allPages
+    .filter((page) => !page.hasCustomPage)
     .map((page) => ({
       slug: page.slug
     }))
+
+  // Return a fallback to satisfy Next.js Cache Components requirement
+  return pages.length > 0 ? pages : [{ slug: '__placeholder' }]
 }
 
 async function fetchData(slug) {
